@@ -1,8 +1,4 @@
-﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations.Schema;
-
-
-namespace GarageMVC.Models.Vehicles
+﻿namespace GarageMVC.Models.Vehicles
 {
     public abstract class Vehicle : IVehicle
     {
