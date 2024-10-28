@@ -17,37 +17,50 @@
                     @Html.DisplayNameFor(model => model.RegistrationNumber)
                     @(ViewData["CurrentSort"]?.ToString() == "RegistrationNumber_asc" ? "▼" : "▲")
                 </a>
-                <input type="text" name="searchTerm" placeholder="Filter by Registration" class="form-control filter-input" />
+                <form asp-action="Index">
+                    <input type="text" name="searchTerm" placeholder="Filter by Registration" class="form-control filter-input" />
+                </form>
             </th>
             <th>
                 <a asp-action="Index" asp-route-sortColumn="VehicleType" asp-route-sortOrder="@(ViewData["CurrentSort"]?.ToString() == "VehicleType_asc" ? "desc" : "asc")">
                     @Html.DisplayNameFor(model => model.VehicleType)
                     @(ViewData["CurrentSort"]?.ToString() == "VehicleType_asc" ? "▼" : "▲")
                 </a>
-                <input type="text" name="searchTerm" placeholder="Filter by Type" class="form-control filter-input" />
+                <form asp-action="Index">
+
+                    <input type="text" name="searchTerm" placeholder="Filter by Type" class="form-control filter-input" />
+                </form>
             </th>
             <th>
                 <a asp-action="Index" asp-route-sortColumn="Color" asp-route-sortOrder="@(ViewData["CurrentSort"]?.ToString() == "Color_asc" ? "desc" : "asc")">
                     @Html.DisplayNameFor(model => model.Color)
                     @(ViewData["CurrentSort"]?.ToString() == "Color_asc" ? "▼" : "▲")
                 </a>
-                <input type="text" name="searchTerm" placeholder="Filter by Color" class="form-control filter-input" />
+                <form asp-action="Index">
+
+                    <input type="text" name="searchTerm" placeholder="Filter by Color" class="form-control filter-input" />
+                </form>
             </th>
             <th>
                 <a asp-action="Index" asp-route-sortColumn="FuelType" asp-route-sortOrder="@(ViewData["CurrentSort"]?.ToString() == "FuelType_asc" ? "desc" : "asc")">
                     @Html.DisplayNameFor(model => model.FuelType)
                     @(ViewData["CurrentSort"]?.ToString() == "FuelType_asc" ? "▼" : "▲")
                 </a>
-                <input type="text" name="searchTerm" placeholder="Filter by FuelType" class="form-control filter-input" />
+                <form asp-action="Index">
+
+                    <input type="text" name="searchTerm" placeholder="Filter by FuelType" class="form-control filter-input" />
+                </form>
             </th>
             <th>
                 <a asp-action="Index" asp-route-sortColumn="NumberOfWheels" asp-route-sortOrder="@(ViewData["CurrentSort"]?.ToString() == "NumberOfWheels_asc" ? "desc" : "asc")">
                     @Html.DisplayNameFor(model => model.NumberOfWheels)
                     @(ViewData["CurrentSort"]?.ToString() == "NumberOfWheels_asc" ? "▼" : "▲")
                 </a>
-                <input type="text" name="searchTerm" placeholder="Filter by Wheels" class="form-control filter-input" />
+                <form asp-action="Index">
+
+                    <input type="text" name="searchTerm" placeholder="Filter by Wheels" class="form-control filter-input" />
+                </form>
             </th>
-            <th></th>
         </tr>
     </thead>
 
@@ -83,13 +96,11 @@
 
 @section Scripts {
     <script>
-        // Add an event listener for Enter key on each filter input
         document.querySelectorAll('.filter-input').forEach(input => {
-            input.addEventListener('keydown', function(event) {
+            input.addEventListener('keydown', function (event) {
                 if (event.key === 'Enter') {
-                    console.log("hej")
-                    event.preventDefault();  // Prevent the default Enter behavior
-                    this.form.submit();      // Submit the form
+                    event.preventDefault();
+                    this.form.submit();
                 }
             });
         });

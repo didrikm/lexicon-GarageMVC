@@ -28,6 +28,7 @@ namespace GarageMVC.Controllers
             {
                 vehicles = vehicles.Where(v =>
                     v.RegistrationNumber.Contains(searchTerm) ||
+                    v.VehicleType.Contains(searchTerm) ||
                     v.Color.Contains(searchTerm) ||
                     v.FuelType.Contains(searchTerm) ||
                     v.NumberOfWheels.ToString().Contains(searchTerm));

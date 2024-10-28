@@ -2,7 +2,6 @@ using GarageMVC.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-
 // Add services to the container.
 builder.Services.AddDbContext<GarageMVCContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("GarageMVCContext") ?? throw new InvalidOperationException("Connection string 'StorageContext' not found.")));
