@@ -1,0 +1,88 @@
+﻿@model GarageMVC.Models.Vehicles.VehicleCreateViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Vehicle</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div class="form-group">
+                <label for="VehicleType">Select Vehicle Type</label>
+                <select id="VehicleType" class="form-control">
+                    <option value="">--Select--</option>
+                    <option value="Car">Car</option>
+                    <option value="Bus">Bus</option>
+                    <option value="Airplane">Airplane</option>
+                    <option value="Boat">Boat</option>
+                    <option value="Motorcycle">Motorcycle</option>
+                </select>
+            </div>
+
+            <div id="VehicleFormFields" style="display:none;">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="RegistrationNumber" class="control-label"></label>
+                    <input asp-for="RegistrationNumber" class="form-control" />
+                    <span asp-validation-for="RegistrationNumber" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Color" class="control-label"></label>
+                    <input asp-for="Color" class="form-control" />
+                    <span asp-validation-for="Color" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="FuelType" class="control-label"></label>
+                    <input asp-for="FuelType" class="form-control" />
+                    <span asp-validation-for="FuelType" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="NumberOfWheels" class="control-label"></label>
+                    <input asp-for="NumberOfWheels" class="form-control" />
+                    <span asp-validation-for="NumberOfWheels" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        document.getElementById("VehicleType").addEventListener("change", function () {
+            var selectedType = this.value;
+            var formFields = document.getElementById("VehicleFormFields");
+
+            if (selectedType) {
+                formFields.style.display = "block";
+                var hiddenInput = document.createElement("input");
+                hiddenInput.type = "hidden";
+                hiddenInput.name = "VehicleType";
+                hiddenInput.value = selectedType;
+                formFields.appendChild(hiddenInput);
+            } else {
+                formFields.style.display = "none";
+            }
+        });
+    </script>
+
+}
